@@ -111,5 +111,8 @@ dl_female_tidy <- dl_female_raw %>%
 
 dl_tidy <- rbind(dl_male_tidy, dl_female_tidy)
 
+#The source file has 2/ after Illinois and Alaska which need to be removed
+dl_tidy$state_name <- dl_tidy$state_name %>% str_replace("2/", "")
+
 # Saving machine readable file.
 write.csv(dl_tidy,file = "2018_dl22.csv")
